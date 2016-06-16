@@ -1,5 +1,4 @@
 var del = require('del');
-var es = require('event-stream');
 var fs = require('fs');
 
 var gulp = require('gulp');
@@ -40,7 +39,6 @@ gulp.task('html', function () {
 
 gulp.task('watch', function () {
   gulp.watch(['./demo/**/*.html'], ['html']);
-  gulp.watch(['./**/*.less'], ['styles']);
   gulp.watch(['./src/**/*.js','./demo/**/*.js', './**/*.html'], ['build']);
 });
 
@@ -49,7 +47,7 @@ gulp.task('clean', function(cb) {
 });
 
 gulp.task('build', ['clean'], function() {
-  gulp.src('src/directive.js')
+  gulp.src('src/angular-dynamic-html.js')
     .pipe(plumber({errorHandler: handleError}))
     .pipe(jshint({esversion: 6}))
     .pipe(jshint.reporter('jshint-stylish'))
@@ -57,10 +55,12 @@ gulp.task('build', ['clean'], function() {
       timestamp: (new Date()).toISOString(), pkg: config.pkg
     }))
     .pipe(babel({presets:['es2015']}))
+    .pipe(gulp.dest('./dist'))
     .pipe(uglify({
       preserveComments: 'some',
       mangle: false
     }))
+    .pipe(rename({suffix: '.min'}))
     .pipe(gulp.dest('./dist'))
     .pipe(connect.reload());
 });

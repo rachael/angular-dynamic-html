@@ -5,7 +5,7 @@
     "Mohsen Azimi <mazimi@apigee.com>"
   ],
   "description": "Angular Publishable Directive Template",
-  "main": "dist/directive.js, dist/directive.js",
+  "main": "dist/angular-dynamic-html.js",
   "license": "MIT",
   "private": false,
   "ignore": [

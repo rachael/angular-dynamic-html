@@ -14,8 +14,7 @@ module.exports = function(config) {
       'bower_components/angular-sanitize/angular-sanitize.js',
       'bower_components/angular-mocks/angular-mocks.js',
 
-      'dist/directive.js',
-      'dist/directive.css',
+      'dist/angular-dynamic-html.js',
       'test/**/*.spec.js'
     ],
 
