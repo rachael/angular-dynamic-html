@@ -9,12 +9,14 @@ describe('dynamic-html', function () {
     elm = angular.element(template);
     angular.element(document.body).prepend(elm);
 
-    scope.htmlGenerator = () => { return "<h1>Expected Content</h1>"; };
-    scope.dynamicHtml = "<div dynamic-html='htmlGenerator()'></div>";
-    scope.console = console;
+    scope.html = "<h1>Expected Content</h1>";
+    scope.dynamicHtml = "<div dynamic-html='{{html}}'></div>";
 
+    console.log('about to compile elm', elm);
     $compile(elm)(scope);
+    console.log('compiled elm', elm);
     scope.$digest();
+    console.log('ran $digest', elm);
 
     return elm;
   }
@@ -39,9 +41,6 @@ describe('dynamic-html', function () {
 
       it('should compile contents', function () {
         element = createDirective(template);
-
-        console.log(element);
-
         expect(element.text()).toContain('Expected Content');
       });
     });

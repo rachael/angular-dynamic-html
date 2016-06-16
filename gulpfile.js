@@ -13,7 +13,7 @@ var plumber = require('gulp-plumber');
 var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
 
-var karma = require('karma').server;
+var karma = require('karma').Server;
 
 var config = {
   pkg : JSON.parse(fs.readFileSync('./package.json')),
@@ -53,12 +53,14 @@ gulp.task('scripts', ['clean'], function() {
     .pipe(plumber({errorHandler: handleError}))
     .pipe(jshint({esversion: 6}))
     .pipe(jshint.reporter('jshint-stylish'))
-    .pipe(jshint.reporter('fail'))
     .pipe(header(config.banner, {
       timestamp: (new Date()).toISOString(), pkg: config.pkg
     }))
     .pipe(babel({presets:['es2015']}))
-    .pipe(uglify({preserveComments: 'some'}))
+    .pipe(uglify({
+      preserveComments: 'some',
+      mangle: false
+    }))
     .pipe(gulp.dest('./dist'))
     .pipe(connect.reload());
 });
@@ -68,21 +70,28 @@ gulp.task('open', function(){
   .pipe(open('', {url: 'http://localhost:8080/demo/demo.html'}));
 });
 
-gulp.task('jshint-test', function(){
-  return gulp.src('./test/**/*.js').pipe(jshint({esversion: 6}));
-})
+gulp.task('jshint-test', function() {
+  gulp.src('./test/**/*.js')
+    .pipe(plumber({errorHandler: handleError}))
+    .pipe(jshint({esversion: 6}))
+    .pipe(jshint.reporter('jshint-stylish'));
+});
 
 gulp.task('karma', function (done) {
   karma.start({
     configFile: __dirname + '/karma.conf.js',
     singleRun: true
-  }, done);
+  }, function() {
+      done(); // anonymous function fixes formatError
+  });
 });
 
-gulp.task('karma-serve', function(done){
+gulp.task('karma-serve', function(done) {
   karma.start({
     configFile: __dirname + '/karma.conf.js'
-  }, done);
+  }, function() {
+      done(); // anonymous function fixes formatError
+  });
 });
 
 function handleError(err) {

@@ -36,5 +36,7 @@
     "xdescribe": false,
     "module": false,
     "inject": false
-  }
+  },
+  "browser": true,
+  "devel": true
 }
