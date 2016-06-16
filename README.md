@@ -1,4 +1,6 @@
-# The Directive
+# angular-dynamic-html
+
+TODO: Description goes here.
 
 ### Installation
 
@@ -10,7 +12,25 @@ npm install angular-dynamic-html
 
 ### Usage
 
-Add it as a dependency to your app and then use the directive in your HTML files.
+In the template:
+```html
+<div dynamic-html='{{dynamicHtml}}'></div>
+```
+
+In the controller:
+```javascript
+$scope.dynamicHtml = "<div ng-bind-html='html'></div>";
+$scope.html = "<h1>Expected Content</h1>";
+```
+
+Compiled result:
+```html
+<div dynamic-html="<div ng-bind-html='html'></div>">
+    <div ng-bind-html="html">
+        <h1>Expected Content</h1>
+    </div>
+</div>
+```
 
 ### Development
 
