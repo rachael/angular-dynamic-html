@@ -41,14 +41,14 @@ gulp.task('html', function () {
 gulp.task('watch', function () {
   gulp.watch(['./demo/**/*.html'], ['html']);
   gulp.watch(['./**/*.less'], ['styles']);
-  gulp.watch(['./src/**/*.js','./demo/**/*.js', './**/*.html'], ['scripts']);
+  gulp.watch(['./src/**/*.js','./demo/**/*.js', './**/*.html'], ['build']);
 });
 
 gulp.task('clean', function(cb) {
   del(['dist/**/*'], cb);
 });
 
-gulp.task('scripts', ['clean'], function() {
+gulp.task('build', ['clean'], function() {
   gulp.src('src/directive.js')
     .pipe(plumber({errorHandler: handleError}))
     .pipe(jshint({esversion: 6}))
@@ -65,7 +65,7 @@ gulp.task('scripts', ['clean'], function() {
     .pipe(connect.reload());
 });
 
-gulp.task('open', function(){
+gulp.task('open', function() {
   gulp.src('./demo/demo.html')
   .pipe(open('', {url: 'http://localhost:8080/demo/demo.html'}));
 });
@@ -99,8 +99,7 @@ function handleError(err) {
   this.emit('end');
 };
 
-gulp.task('build', ['scripts']);
-gulp.task('serve', ['build', 'connect', 'watch', 'open']);
-gulp.task('default', ['build', 'test']);
 gulp.task('test', ['build', 'jshint-test', 'karma']);
+gulp.task('serve', ['build', 'connect', 'watch', 'open']);
 gulp.task('serve-test', ['build', 'watch', 'jshint-test', 'karma-serve']);
+gulp.task('default', ['test']);
