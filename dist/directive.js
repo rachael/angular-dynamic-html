@@ -1,7 +1,7 @@
 /*!
  * angular-dynamic-html
  * 
- * Version: 0.0.8 - 2016-06-16T20:10:52.765Z
+ * Version: 0.0.8 - 2016-06-16T22:11:27.335Z
  * License: MIT
  */
-"use strict";console.log("wooooooooo----------------! 1"),angular.module("dynamicHtml",[]).directive("dynamicHtml",["$compile",function($compile){return console.log("wooooooooo----------------! 2"),{restrict:"A",replace:!0,link:function(scope,ele,attrs){throw new Error("in link function")}}}]);
+"use strict";angular.module("dynamicHtml",[]).directive("dynamicHtml",["$compile",function($compile){return{restrict:"A",replace:!0,link:function(scope,ele,attrs){var compileHtml=function(){ele.html(attrs.dynamicHtml),$compile(ele.contents())(scope)};compileHtml(),scope.$on("updateDynamicHtml",function(){compileHtml()})}}}]);
