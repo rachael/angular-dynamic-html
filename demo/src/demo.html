@@ -1,0 +1,100 @@
+<!doctype html>
+<html ng-app="demo">
+  <head>
+    <meta charset="utf-8">
+    <title>Demo: angular-dynamic-html</title>
+    <script src="../../bower_components/highlightjs/highlight.pack.js"></script>
+
+    <script src="../../bower_components/angular/angular.js"></script>
+    <script src="../../bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="../../bower_components/angular-highlightjs/angular-highlightjs.js"></script>
+
+    <script src="../../dist/angular-dynamic-html.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300|Source+Code+Pro" rel="stylesheet">
+    <link rel="stylesheet" href="../../bower_components/highlightjs/styles/obsidian.css">
+
+    <link rel="stylesheet" href="../demo.min.css">
+  </head>
+  <body>
+    <div ng-controller="demoCtrl as ctrl">
+      <h1>Demo: angular-dynamic-html</h1>
+
+      <hr>
+
+      <h2>Basic usage:</h2>
+
+      <p>HTML:</p>
+      <div hljs hljs-source="htmlExample" hljs-language="html"></div>
+
+      <p>In the controller:</p>
+      <div hljs hljs-source="controllerExample" hljs-language="javascript"></div>
+
+      <h2>Result:</h2>
+      <div class="code-example" dynamic-html="{{dynamicHtml}}"></div>
+
+      <hr class="separator">
+
+      <h2>Modifying the contents:</h2>
+
+      <p>Once compiled, directives inside a <code>dynamic-html</code> will perform as expected:</p>
+
+      <div class="code-example" dynamic-html="{{updatableDynamicHtml}}"></div>
+
+      <div class="button-row">
+        <a class="button code-button" ng-click="updatableHtml = '<p>foo</p>'">
+          $scope.ngHtml = "&lt;p&gt;foo&lt;/p&gt;"
+        </a>
+        <a class="button code-button" ng-click="updatableHtml = '<p>bar</p>'">
+          $scope.ngHtml = "&lt;p&gt;bar&lt;/p&gt;"
+        </a>
+      </div>
+
+      <hr class="separator">
+
+      <h2>Forcing a recompile:</h2>
+
+      <p><code>$broadcast</code> or <code>$emit</code> an <code>"updateDynamicHtml"</code> event and <code>dynamic-html</code> will recompile its contents.</p>
+
+      <p>HTML:</p>
+      <div hljs hljs-source="needsBroadcastHtmlExample" hljs-language="html"></div>
+
+      <p>In the controller:</p>
+      <div hljs hljs-source="needsBroadcastControllerExample" hljs-language="javascript"></div>
+
+      <h2>Live Demo:</h2>
+      <div class="code-example">
+        <code>displayedCollection: "{{displayedCollection}}"</code><br/>
+        <code>order: "{{order}}"</code>
+      </div>
+      <div class="code-example" dynamic-html="{{generateDynamicHtml(displayedCollection)}}"></div>
+
+      <div class="button-row">
+        <a class="button code-button" ng-click="order = 'id'">
+          $scope.order = "id";
+        </a>
+        <a class="button code-button" ng-click="order = 'text'">
+          $scope.order = "text";
+        </a>
+      </div>
+
+      <div class="button-row">
+        <a class="button code-button" ng-click="displayedCollection = 'eatSleepCodeRepeat'">
+          $scope.displayedCollection = "eatSleepCodeRepeat";
+        </a>
+        <a class="button code-button" ng-click="displayedCollection = 'eatSleepHackRepeat'">
+          $scope.displayedCollection = "eatSleepHackRepeat";
+        </a>
+      </div>
+
+      <div class="button-row">
+        <a class="button code-button" ng-click="$broadcast('updateDynamicHtml')">
+          $broadcast('updateDynamicHtml');
+        </a>
+      </div>
+
+    </div>
+
+    <script src="../demo.min.js"></script>
+  </body>
+</html>

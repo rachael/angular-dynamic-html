@@ -1,0 +1,75 @@
+* {
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4, p {
+    font-family: "Open Sans";
+    font-weight: 300;
+}
+
+h1, h2, h3, h4 {
+    margin: 1rem 0;
+}
+
+p {
+    margin: 0.5rem 0;
+}
+
+pre, code, .code-button {
+    font-family: "Source Code Pro";
+    font-weight: 400;
+}
+
+hr {
+    height: 0;
+    margin: 0 0 2rem 0;
+    border-top: 1px solid #282b2e;
+    opacity: 0.5;
+
+    &.separator {
+        margin: 2rem 0;
+    }
+}
+
+.code-example {
+    border: 1px solid #282b2e;
+    padding: 1rem;
+
+    + .code-example {
+        margin-top: 1rem;
+    }
+}
+
+.button-row {
+    margin-top: 1rem;
+
+    + .button-row {
+        margin-top: 0.5rem;
+    }
+}
+
+.button {
+    display: inline-block;
+    margin: 0 0.5rem 0.5rem 0;
+    padding: 0.5em 1em;
+    background: #282b2e;
+    color: #e0e2e4;
+    cursor: pointer;
+    transition: opacity 0.4s;
+    transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+    user-select: none;
+
+    &:hover {
+        opacity: 0.8;
+    }
+
+    &:active {
+        opacity: 0.7;
+    }
+}
+
+@media(min-width: 90rem) {
+    pre, .code-example {
+        width: 60vw;
+    }
+}

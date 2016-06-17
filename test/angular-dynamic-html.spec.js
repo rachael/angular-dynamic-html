@@ -28,7 +28,7 @@ describe('dynamic-html', function () {
     if (element) element.remove();
   });
 
-  it('should compile variables', function() {
+  it('should compile nested angular directive', function() {
     let template = "<div dynamic-html='{{dynamicHtml}}'></div>";
     let scope = {
       dynamicHtml: "<div ng-bind-html='html'></div>",
@@ -38,7 +38,7 @@ describe('dynamic-html', function () {
     expect(element.text()).toContain("Expected Content");
   });
 
-  it('should compile and call generator functions', function() {
+  it('should work with generator functions, too', function() {
     let template = "<div dynamic-html='{{dynamicHtml()}}'></div>";
     let scope = {
       dynamicHtml: () => "<div ng-bind-html='html()'></div>",

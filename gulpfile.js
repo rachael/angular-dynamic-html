@@ -2,6 +2,7 @@ var del = require('del');
 var fs = require('fs');
 
 var gulp = require('gulp');
+var autoprefixer = require('gulp-autoprefixer');
 var babel = require("gulp-babel");
 var connect = require('gulp-connect');
 var header = require('gulp-header');
@@ -10,6 +11,7 @@ var jshint = require('gulp-jshint');
 var open = require('gulp-open');
 var plumber = require('gulp-plumber');
 var rename = require('gulp-rename');
+var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
 
 var karma = require('karma').Server;
@@ -32,14 +34,44 @@ gulp.task('connect', function() {
   });
 });
 
-gulp.task('html', function () {
-  gulp.src(['./demo/*.html', '.src/*.html'])
+gulp.task('html-reload', function () {
+  gulp.src(['./demo/src/*.html', '.src/*.html'])
+    .pipe(connect.reload());
+});
+
+gulp.task('sass-demo', function () {
+  return gulp.src('./demo/**/*.scss')
+    .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+    .pipe(gulp.dest('./demo'));
+});
+
+gulp.task('css-demo', ['sass-demo'], function () {
+  gulp.src(['./demo/src/*.css'])
+    .pipe(autoprefixer())
+    .pipe(rename({suffix: '.min'}))
+    .pipe(gulp.dest('./demo'))
+    .pipe(connect.reload());
+  del(['demo/**/*.css']);
+});
+
+gulp.task('build-demo', function () {
+  gulp.src('./demo/src/*.js')
+    .pipe(plumber({errorHandler: handleError}))
+    .pipe(babel({presets:['es2015']}))
+    .pipe(uglify({
+      preserveComments: 'none',
+      mangle: false
+    }))
+    .pipe(rename({suffix: '.min'}))
+    .pipe(gulp.dest('./demo'))
     .pipe(connect.reload());
 });
 
 gulp.task('watch', function () {
-  gulp.watch(['./demo/**/*.html'], ['html']);
-  gulp.watch(['./src/**/*.js','./demo/**/*.js', './**/*.html'], ['build']);
+  gulp.watch(['./**/*.html'], ['html-reload']);
+  gulp.watch(['./demo/src/*.scss'], ['css-demo']);
+  gulp.watch(['./demo/src/*.js'], ['build-demo']);
+  gulp.watch(['./src/**/*.js'], ['build']);
 });
 
 gulp.task('clean', function(cb) {
@@ -66,8 +98,8 @@ gulp.task('build', ['clean'], function() {
 });
 
 gulp.task('open', function() {
-  gulp.src('./demo/demo.html')
-  .pipe(open('', {url: 'http://localhost:8080/demo/demo.html'}));
+  gulp.src('./demo/src/demo.html')
+  .pipe(open('', {url: 'http://localhost:8080/demo/src/demo.html'}));
 });
 
 gulp.task('jshint-test', function() {
@@ -100,6 +132,6 @@ function handleError(err) {
 };
 
 gulp.task('test', ['build', 'jshint-test', 'karma']);
-gulp.task('serve', ['build', 'connect', 'watch', 'open']);
+gulp.task('serve', ['build', 'build-demo', 'css-demo', 'connect', 'watch', 'open']);
 gulp.task('serve-test', ['build', 'watch', 'jshint-test', 'karma-serve']);
 gulp.task('default', ['test']);
