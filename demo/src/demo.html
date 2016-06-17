@@ -42,12 +42,8 @@
       <div class="code-example" dynamic-html="{{updatableDynamicHtml}}"></div>
 
       <div class="button-row">
-        <a class="button code-button" ng-click="updatableHtml = '<p>foo</p>'">
-          $scope.ngHtml = "&lt;p&gt;foo&lt;/p&gt;"
-        </a>
-        <a class="button code-button" ng-click="updatableHtml = '<p>bar</p>'">
-          $scope.ngHtml = "&lt;p&gt;bar&lt;/p&gt;"
-        </a>
+        <a class="button code-button" ng-click="updatableHtml = '<p>foo</p>'" hljs hljs-language="javascript">$scope.ngHtml = "<p>foo</p>"</a>
+        <a class="button code-button" ng-click="updatableHtml = '<p>bar</p>'" hljs hljs-language="javascript">$scope.ngHtml = "<p>bar</p>"</a>
       </div>
 
       <hr class="separator">
@@ -69,28 +65,22 @@
       </div>
       <div class="code-example" dynamic-html="{{generateDynamicHtml(displayedCollection)}}"></div>
 
+      <p>Doesn't require a <code>$broadcast</code>:</p>
+
       <div class="button-row">
-        <a class="button code-button" ng-click="order = 'id'">
-          $scope.order = "id";
-        </a>
-        <a class="button code-button" ng-click="order = 'text'">
-          $scope.order = "text";
-        </a>
+        <a class="button code-button" ng-click="order = 'id'" hljs hljs-language="javascript">$scope.order = "id";</a>
+        <a class="button code-button" ng-click="order = 'text'" hljs hljs-language="javascript">$scope.order = "text";</a>
+      </div>
+
+      <p>Requires a <code>$broadcast</code>:</p>
+
+      <div class="button-row">
+        <a class="button code-button" ng-click="displayedCollection = 'eatSleepCodeRepeat'" hljs hljs-language="javascript">$scope.displayedCollection = "eatSleepCodeRepeat";</a>
+        <a class="button code-button" ng-click="displayedCollection = 'eatSleepHackRepeat'" hljs hljs-language="javascript">$scope.displayedCollection = "eatSleepHackRepeat";</a>
       </div>
 
       <div class="button-row">
-        <a class="button code-button" ng-click="displayedCollection = 'eatSleepCodeRepeat'">
-          $scope.displayedCollection = "eatSleepCodeRepeat";
-        </a>
-        <a class="button code-button" ng-click="displayedCollection = 'eatSleepHackRepeat'">
-          $scope.displayedCollection = "eatSleepHackRepeat";
-        </a>
-      </div>
-
-      <div class="button-row">
-        <a class="button code-button" ng-click="$broadcast('updateDynamicHtml')">
-          $broadcast('updateDynamicHtml');
-        </a>
+        <a class="button code-button" ng-click="$broadcast('updateDynamicHtml')" hljs hljs-language="javascript">$broadcast('updateDynamicHtml');</a>
       </div>
 
     </div>
