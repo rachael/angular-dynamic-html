@@ -19,16 +19,16 @@ In the template:
 
 In the controller:
 ```javascript
-$scope.dynamicHtml = "<div ng-bind-html='html'></div>";
+$scope.dynamicHtml = "<span ng-bind-html='html'></span>";
 $scope.html = "<h1>Expected Content</h1>";
 ```
 
 Compiled result:
 ```html
-<div dynamic-html="<div ng-bind-html='html'></div>">
-    <div ng-bind-html="html">
+<div dynamic-html="<span ng-bind-html='html'></span>">
+    <span ng-bind-html="html">
         <h1>Expected Content</h1>
-    </div>
+    </span>
 </div>
 ```
 
