@@ -5,6 +5,7 @@ var app = angular
 .controller('demoCtrl', ['$scope', '$sce',
   function($scope, $sce) {
 
+    // Example 1: Basic Usage
     $scope.htmlExample = `<div dynamic-html="{{dynamicHtml}}"></div>`;
     $scope.controllerExample =
       `$scope.dynamicHtml = '<div ng-bind-html="html">Contents of $scope.dynamicHtml</div>';\
@@ -13,9 +14,11 @@ var app = angular
     $scope.dynamicHtml = '<div ng-bind-html="ngHtml">Contents of $scope.dynamicHtml</div>';
     $scope.ngHtml = '<p>Contents of $scope.ngHtml</p>';
 
+    // Example 2: Modifying Contents
     $scope.updatableDynamicHtml = '<div ng-bind-html="updatableHtml"></div>';
     $scope.updatableHtml = '<p>Change me!</p>';
 
+    // Example 3: Event Update
     $scope.eatSleepCodeRepeat = [
       {id: 2, text: "code"},
       {id: 0, text: "eat"},
