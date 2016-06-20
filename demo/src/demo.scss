@@ -5,6 +5,7 @@
 body {
     font-family: "Open Sans";
     font-weight: 300;
+    margin: 1rem;
 }
 
 h1, h2, h3, h4 {
@@ -35,7 +36,7 @@ hr {
     padding: 1rem;
 }
 
-.code-example {
+.code-demo {
     border: 1px solid #282b2e;
     padding: 1rem;
     margin-bottom: 1rem;
@@ -45,12 +46,20 @@ hr {
     }
 }
 
+.note {
+    margin-bottom: 1rem;
+    font-size: 90%;
+    opacity: 0.7;
+    font-style: italic;
+}
+
 .button-row {
     margin-bottom: 1rem;
 }
 
 .button {
     display: inline-block;
+    max-width: 100%;
     margin: 0 0.5rem 0.5rem 0;
     padding: 1rem;
     background: #282b2e;
@@ -72,6 +81,7 @@ hr {
 .code-button {
     pre {
         margin: 0;
+        white-space: pre-wrap;
     }
     code {
         padding: 0;
@@ -79,7 +89,7 @@ hr {
 }
 
 @media(min-width: 90rem) {
-    pre, .code-example {
+    .container {
         width: 60vw;
     }
 }

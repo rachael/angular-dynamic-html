@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="../demo.min.css">
   </head>
   <body>
-    <div ng-controller="demoCtrl as ctrl">
+    <div class="container" ng-controller="demoCtrl as ctrl">
       <h1>Demo: angular-dynamic-html</h1>
 
       <hr>
@@ -25,13 +25,13 @@
       <h2>Basic usage:</h2>
 
       <p>HTML:</p>
-      <div hljs hljs-source="htmlExample" hljs-language="html"></div>
+      <div class="code-example" hljs hljs-source="htmlExample" hljs-language="html"></div>
 
       <p>In the controller:</p>
-      <div hljs hljs-source="controllerExample" hljs-language="javascript"></div>
+      <div class="code-example" hljs hljs-source="controllerExample" hljs-language="javascript"></div>
 
       <h2>Result:</h2>
-      <div class="code-example" dynamic-html="{{dynamicHtml}}"></div>
+      <div class="code-demo" dynamic-html="{{dynamicHtml}}"></div>
 
       <hr class="separator">
 
@@ -39,7 +39,7 @@
 
       <p>Once compiled, directives inside a <code>dynamic-html</code> will perform as expected:</p>
 
-      <div class="code-example" dynamic-html="{{updatableDynamicHtml}}"></div>
+      <div class="code-demo" dynamic-html="{{updatableDynamicHtml}}"></div>
 
       <div class="button-row">
         <a class="button code-button" ng-click="updatableHtml = '<p>foo</p>'" hljs hljs-language="javascript">$scope.ngHtml = "<p>foo</p>"</a>
@@ -53,17 +53,18 @@
       <p><code>$broadcast</code> or <code>$emit</code> an <code>"updateDynamicHtml"</code> event and <code>dynamic-html</code> will recompile its contents.</p>
 
       <p>HTML:</p>
-      <div hljs hljs-source="needsBroadcastHtmlExample" hljs-language="html"></div>
+      <div class="code-example" hljs hljs-source="needsBroadcastHtmlExample" hljs-language="html"></div>
 
       <p>In the controller:</p>
-      <div hljs hljs-source="needsBroadcastControllerExample" hljs-language="javascript"></div>
+      <div class="code-example" hljs hljs-source="needsBroadcastControllerExample" hljs-language="javascript"></div>
+      <p class="note">Note (ng-repeat only): When using this directive, wrap ng-repeats to avoid a bug where Angular fails to clean up the references properly after the update event.</p>
 
       <h2>Live Demo:</h2>
-      <div class="code-example">
+      <div class="code-demo">
         <code>displayedCollection: "{{displayedCollection}}"</code><br/>
         <code>order: "{{order}}"</code>
       </div>
-      <div class="code-example" dynamic-html="{{generateDynamicHtml(displayedCollection)}}"></div>
+      <div class="code-demo" dynamic-html="{{generateDynamicHtml(displayedCollection)}}"></div>
 
       <p>Doesn't require a <code>$broadcast</code>:</p>
 
