@@ -18,6 +18,23 @@ module.exports = function(config) {
       'test/**/*.spec.js'
     ],
 
+    preprocessors: {
+      'test/**/*.spec.js': ['babel']
+    },
+
+    babelPreprocessor: {
+      options: {
+        presets: ['es2015'],
+        sourceMap: 'inline'
+      },
+      filename: function (file) {
+        return file.originalPath.replace(/\.js$/, '.es2015.js');
+      },
+      sourceFileName: function (file) {
+        return file.originalPath;
+      }
+    },
+
     // List of files to exclude
     exclude: [],
 
