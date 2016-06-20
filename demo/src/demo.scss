@@ -3,19 +3,31 @@
     box-sizing: border-box;
 }
 
+// Scaffolding
+$grid-margin: 1rem;
+
+.row {
+    margin: $grid-margin*2 0;
+}
+
+.header-row {
+    margin-top: 0;
+}
+
 // Typography
 body {
     font-family: "Open Sans";
     font-weight: 300;
-    margin: 1rem;
+    margin: $grid-margin;
 }
 
 h1, h2, h3, h4 {
-    margin: 1rem 0;
+    position: relative;
+    margin: $grid-margin 0 1em 0; // top: for grid, bottom: for typography
 }
 
 p {
-    margin: 0.5rem 0;
+    margin: $grid-margin 0;
 }
 
 pre, code, .code-button {
@@ -25,27 +37,14 @@ pre, code, .code-button {
 
 hr {
     height: 0;
-    margin: 1rem 0;
+    margin: $grid-margin*2 0;
     border-top: 1px solid #282b2e;
     opacity: 0.5;
-
-    &.separator {
-        margin: 2rem 0;
-    }
-}
-
-// Scaffolding
-.row {
-    margin: 2rem 0;
-}
-
-.header-row {
-    margin-top: 0;
 }
 
 // Demo
 .code-example {
-    margin: 1rem 0;
+    margin: $grid-margin 0;
 
     .hljs {
         padding: 1rem;
@@ -53,7 +52,7 @@ hr {
 }
 
 .code-demo {
-    margin: 1rem 0;
+    margin: $grid-margin 0;
     padding: 1rem;
     border: 1px solid #282b2e;
 
@@ -67,20 +66,21 @@ hr {
 }
 
 .note {
-    margin-bottom: 1rem;
+    margin-bottom: $grid-margin;
     font-size: 90%;
     opacity: 0.7;
     font-style: italic;
 }
 
 .button-row {
-    margin-bottom: 1rem;
+    // negative margin on row cancels out inner button margins
+    margin: -$grid-margin/2 0 $grid-margin 0;
 }
 
 .button {
     display: inline-block;
     max-width: 100%;
-    margin: 0.5rem 0.5rem 0 0;
+    margin: $grid-margin/2 $grid-margin/2 0 0;
     padding: 1rem;
     background: #282b2e;
     color: #e0e2e4;

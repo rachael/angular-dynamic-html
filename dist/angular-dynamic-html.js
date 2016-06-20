@@ -1,7 +1,7 @@
 /*!
  * angular-dynamic-html
  * 
- * Version: 1.0.0 - 2016-06-20T16:37:59.012Z
+ * Version: 1.0.0 - 2016-06-20T17:32:31.402Z
  * License: MIT
  */
 
