@@ -1,6 +1,6 @@
 {
   "name": "angular-dynamic-html",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Angular DynamicHtml Directive",
   "repository": "git@github.com:rachael/angular-dynamic-html.git",
   "main": "dist/angular-dynamic-html.js",
