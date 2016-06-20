@@ -17,71 +17,92 @@
     <link rel="stylesheet" href="../demo.min.css">
   </head>
   <body>
-    <div class="container" ng-controller="demoCtrl as ctrl">
-      <h1>Demo: angular-dynamic-html</h1>
+    <div class="container" ng-controller="demoCtrl">
+      <div class="row header-row">
+        <h1>Demo: angular-dynamic-html</h1>
+        <hr>
+      </div>
 
-      <hr>
+      <div class="row">
+        <h2>What does it do?</h2>
 
-      <h2>Basic usage:</h2>
+        <p><code>dynamic-html</code> is a very simple directive that will take an expression that evaluates to html as an attribute, replace its contents with said html, and then run an angular <code>$compile</code>. It was written for use with functions that return dynamically generated html containing other directives which would not be compiled by, for example, <code>ng-bind-html</code>.</p>
 
-      <p>HTML:</p>
-      <div class="code-example" hljs hljs-source="htmlExample" hljs-language="html"></div>
-
-      <p>In the controller:</p>
-      <div class="code-example" hljs hljs-source="controllerExample" hljs-language="javascript"></div>
-
-      <h2>Result:</h2>
-      <div class="code-demo" dynamic-html="{{dynamicHtml}}"></div>
-
-      <hr class="separator">
-
-      <h2>Modifying the contents:</h2>
-
-      <p>Once compiled, directives inside a <code>dynamic-html</code> will perform as expected:</p>
-
-      <div class="code-demo" dynamic-html="{{updatableDynamicHtml}}"></div>
-
-      <div class="button-row">
-        <a class="button code-button" ng-click="updatableHtml = '<p>foo</p>'" hljs hljs-language="javascript">$scope.ngHtml = "<p>foo</p>"</a>
-        <a class="button code-button" ng-click="updatableHtml = '<p>bar</p>'" hljs hljs-language="javascript">$scope.ngHtml = "<p>bar</p>"</a>
+        <p>You can also manually trigger a re-<code>$compile</code> with an <code>"updateDynamicHtml"</code> event.</p>
       </div>
 
       <hr class="separator">
 
-      <h2>Forcing a recompile:</h2>
+      <div class="row">
+        <h2>Basic usage:</h2>
 
-      <p><code>$broadcast</code> or <code>$emit</code> an <code>"updateDynamicHtml"</code> event and <code>dynamic-html</code> will recompile its contents.</p>
+        <p>HTML:</p>
+        <div class="code-example" hljs hljs-source="htmlExample" hljs-language="html"></div>
 
-      <p>HTML:</p>
-      <div class="code-example" hljs hljs-source="needsBroadcastHtmlExample" hljs-language="html"></div>
-
-      <p>In the controller:</p>
-      <div class="code-example" hljs hljs-source="needsBroadcastControllerExample" hljs-language="javascript"></div>
-      <p class="note">Note (ng-repeat only): When using this directive, wrap ng-repeats to avoid a bug where Angular fails to clean up the references properly after the update event.</p>
-
-      <h2>Live Demo:</h2>
-      <div class="code-demo">
-        <code>displayedCollection: "{{displayedCollection}}"</code><br/>
-        <code>order: "{{order}}"</code>
-      </div>
-      <div class="code-demo" dynamic-html="{{generateDynamicHtml(displayedCollection)}}"></div>
-
-      <p>Doesn't require a <code>$broadcast</code>:</p>
-
-      <div class="button-row">
-        <a class="button code-button" ng-click="order = 'id'" hljs hljs-language="javascript">$scope.order = "id";</a>
-        <a class="button code-button" ng-click="order = 'text'" hljs hljs-language="javascript">$scope.order = "text";</a>
+        <p>In the controller:</p>
+        <div class="code-example" hljs hljs-source="controllerExample" hljs-language="javascript"></div>
       </div>
 
-      <p>Requires a <code>$broadcast</code>:</p>
-
-      <div class="button-row">
-        <a class="button code-button" ng-click="displayedCollection = 'eatSleepCodeRepeat'" hljs hljs-language="javascript">$scope.displayedCollection = "eatSleepCodeRepeat";</a>
-        <a class="button code-button" ng-click="displayedCollection = 'eatSleepHackRepeat'" hljs hljs-language="javascript">$scope.displayedCollection = "eatSleepHackRepeat";</a>
+      <div class="row">
+        <h2>Result:</h2>
+        <div class="code-demo" dynamic-html="{{dynamicHtml}}"></div>
       </div>
 
-      <div class="button-row">
-        <a class="button code-button" ng-click="$broadcast('updateDynamicHtml')" hljs hljs-language="javascript">$broadcast('updateDynamicHtml');</a>
+      <hr class="separator">
+
+      <div class="row">
+        <h2>Modifying the contents:</h2>
+
+        <p>Once compiled, directives inside a <code>dynamic-html</code> will perform as expected:</p>
+
+        <div class="code-demo" dynamic-html="{{updatableDynamicHtml}}"></div>
+
+        <div class="button-row">
+          <a class="button code-button" ng-click="updatableHtml = '<p>foo</p>'" hljs hljs-language="javascript">$scope.ngHtml = "<p>foo</p>"</a>
+          <a class="button code-button" ng-click="updatableHtml = '<p>bar</p>'" hljs hljs-language="javascript">$scope.ngHtml = "<p>bar</p>"</a>
+        </div>
+      </div>
+
+      <hr class="separator">
+
+      <div class="row">
+        <h2>Forcing a recompile:</h2>
+
+        <p><code>$broadcast</code> or <code>$emit</code> an <code>"updateDynamicHtml"</code> event and <code>dynamic-html</code> will recompile its contents.</p>
+
+        <p>HTML:</p>
+        <div class="code-example" hljs hljs-source="needsBroadcastHtmlExample" hljs-language="html"></div>
+
+        <p>In the controller:</p>
+        <div class="code-example" hljs hljs-source="needsBroadcastControllerExample" hljs-language="javascript"></div>
+        <p class="note">Note (ng-repeat only): When using this directive, wrap ng-repeats to avoid a bug where Angular fails to clean up the references properly after the update event.</p>
+      </div>
+
+      <div class="row">
+        <h2>Live Demo:</h2>
+        <div class="code-demo">
+          <code>displayedCollection: "{{displayedCollection}}"</code><br/>
+          <code>order: "{{order}}"</code>
+        </div>
+        <div class="code-demo" dynamic-html="{{generateDynamicHtml(displayedCollection)}}"></div>
+
+        <p>Doesn't require a <code>$broadcast</code>:</p>
+
+        <div class="button-row">
+          <a class="button code-button" ng-click="order = 'id'" hljs hljs-language="javascript">$scope.order = "id";</a>
+          <a class="button code-button" ng-click="order = 'text'" hljs hljs-language="javascript">$scope.order = "text";</a>
+        </div>
+
+        <p>Requires a <code>$broadcast</code>:</p>
+
+        <div class="button-row">
+          <a class="button code-button" ng-click="displayedCollection = 'eatSleepCodeRepeat'" hljs hljs-language="javascript">$scope.displayedCollection = "eatSleepCodeRepeat";</a>
+          <a class="button code-button" ng-click="displayedCollection = 'eatSleepHackRepeat'" hljs hljs-language="javascript">$scope.displayedCollection = "eatSleepHackRepeat";</a>
+        </div>
+
+        <div class="button-row">
+          <a class="button code-button" ng-click="$broadcast('updateDynamicHtml')" hljs hljs-language="javascript">$broadcast('updateDynamicHtml');</a>
+        </div>
       </div>
 
     </div>
