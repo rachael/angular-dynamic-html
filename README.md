@@ -1,6 +1,6 @@
 # angular-dynamic-html [![npm version](https://badge.fury.io/js/angular-dynamic-html.svg)](https://badge.fury.io/js/angular-dynamic-html) [![Build Status](https://travis-ci.org/rachael/angular-dynamic-html.svg?branch=master)](https://travis-ci.org/rachael/angular-dynamic-html)
 
-A simple angular directive that will take an expression that evaluates to html as an attribute, replace its contents with said html, and then run an angular `$compile`. It was written for use with functions that return dynamically generated html containing other directives which would not be compiled by, for example, `ng-bind-html`.
+A directive inspired by `ng-bind-html` that accepts uncompiled angular code in addition to raw html.
 
 ### Installation
 
