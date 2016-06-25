@@ -1,11 +1,11 @@
 {
-  "name": "angular-dynamic-html",
+  "name": "dynamic-bind-html",
   "version": "1.0.0",
   "authors": [
     "Rachael Passov <bower@rachael.io>"
   ],
-  "description": "Angular Dynamic HTML Directive",
-  "main": "dist/angular-dynamic-html.js",
+  "description": "A replacement for ng-bind-html that compiles angular code, too.",
+  "main": "dist/dynamic-bind-html.js",
   "license": "MIT",
   "private": false,
   "ignore": [

@@ -1,20 +1,26 @@
-# angular-dynamic-html [![npm version](https://badge.fury.io/js/angular-dynamic-html.svg)](https://badge.fury.io/js/angular-dynamic-html) [![Build Status](https://travis-ci.org/rachael/angular-dynamic-html.svg?branch=master)](https://travis-ci.org/rachael/angular-dynamic-html)
+# dynamic-bind-html [![npm version](https://badge.fury.io/js/dynamic-bind-html.svg)](https://badge.fury.io/js/dynamic-bind-html) [![Build Status](https://travis-ci.org/rachael/dynamic-bind-html.svg?branch=master)](https://travis-ci.org/rachael/dynamic-bind-html)
 
 A directive inspired by `ng-bind-html` that accepts uncompiled angular code in addition to raw html.
 
+You can also manually trigger a re-`$compile` of its contents with an `"updateDynamicBindHtml"` event.
+
 ### Installation
 
-Install via npm
-
+Install via npm:
 ```shell
-npm install angular-dynamic-html
+npm install dynamic-bind-html
+```
+
+Then include the dependency on your Angular module.
+```javascript
+var app = angular.module('myapp', ['dynamic-bind-html']);
 ```
 
 ### Usage
 
 In the template:
 ```html
-<div dynamic-html='{{dynamicHtml}}'></div>
+<div dynamic-bind-html='{{dynamicHtml}}'></div>
 ```
 
 In the controller:
@@ -25,7 +31,7 @@ $scope.html = "<h1>Expected Content</h1>";
 
 Compiled result:
 ```html
-<div dynamic-html="<span ng-bind-html='html'></span>">
+<div dynamic-bind-html="<span ng-bind-html='html'></span>">
     <span ng-bind-html="html">
         <h1>Expected Content</h1>
     </span>

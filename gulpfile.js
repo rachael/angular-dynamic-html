@@ -1,3 +1,12 @@
+/**
+ * Credit goes to angular-directive-boilerplate
+ * https://www.npmjs.com/package/angular-directive-boilerplate
+ * Heavily modified.
+ *
+ * In some cases commands must be run twice to succeed.
+ * TODO: Replace Gulp with webpack and update dev dependencies.
+ */
+
 var del = require('del');
 var fs = require('fs');
 
@@ -71,7 +80,7 @@ gulp.task('watch', function () {
   gulp.watch(['./**/*.html'], ['html-reload']);
   gulp.watch(['./demo/src/*.scss'], ['css-demo']);
   gulp.watch(['./demo/src/*.js'], ['build-demo']);
-  gulp.watch(['./src/**/*.js'], ['build']);
+  gulp.watch(['./src/*.js'], ['build']);
 });
 
 gulp.task('clean', function(cb) {
@@ -79,7 +88,7 @@ gulp.task('clean', function(cb) {
 });
 
 gulp.task('build', ['clean'], function() {
-  gulp.src('src/angular-dynamic-html.js')
+  gulp.src('src/dynamic-bind-html.js')
     .pipe(plumber({errorHandler: handleError}))
     .pipe(jshint({esversion: 6}))
     .pipe(jshint.reporter('jshint-stylish'))

@@ -1,9 +1,9 @@
 {
-  "name": "angular-dynamic-html",
-  "version": "1.0.2",
-  "description": "Angular DynamicHtml Directive",
-  "repository": "git@github.com:rachael/angular-dynamic-html.git",
-  "main": "dist/angular-dynamic-html.js",
+  "name": "dynamic-bind-html",
+  "version": "1.0.0",
+  "description": "A replacement for ng-bind-html that compiles angular code, too.",
+  "repository": "git@github.com:rachael/dynamic-bind-html.git",
+  "main": "dist/dynamic-bind-html.js",
   "scripts": {
     "test": "./node_modules/gulp/bin/gulp.js test"
   },

@@ -1,6 +1,6 @@
 'use strict';
 
-describe('dynamic-html', function () {
+describe('dynamic-bind-html', function () {
   var $scope, $compile, $rootScope, element;
 
   function compileDirective(template, scope) {
@@ -17,7 +17,7 @@ describe('dynamic-html', function () {
     return elm;
   }
 
-  beforeEach(module('ngSanitize', 'dynamicHtml'));
+  beforeEach(module('ngSanitize', 'dynamicBindHtml'));
   beforeEach(inject(function(_$rootScope_, _$compile_) {
     $rootScope = _$rootScope_;
     $compile = _$compile_;
@@ -29,7 +29,7 @@ describe('dynamic-html', function () {
   });
 
   it('should compile nested angular directive', function() {
-    let template = "<div dynamic-html='{{dynamicHtml}}'></div>";
+    let template = "<div dynamic-bind-html='{{dynamicHtml}}'></div>";
     let scope = {
       dynamicHtml: "<div ng-bind-html='html'></div>",
       html: "<h1>Expected Content</h1>"
@@ -39,7 +39,7 @@ describe('dynamic-html', function () {
   });
 
   it('should work with generator functions, too', function() {
-    let template = "<div dynamic-html='{{dynamicHtml()}}'></div>";
+    let template = "<div dynamic-bind-html='{{dynamicHtml()}}'></div>";
     let scope = {
       dynamicHtml: () => "<div ng-bind-html='html()'></div>",
       html: () => "<h1>Expected Content</h1>"
@@ -48,8 +48,8 @@ describe('dynamic-html', function () {
     expect(element.text()).toContain("Expected Content");
   });
 
-  it('should react to updateDynamicHtml $broadcast event', function() {
-    let template = "<div dynamic-html='{{dynamicHtml}}'></div>";
+  it('should react to updateDynamicBindHtml $broadcast event', function() {
+    let template = "<div dynamic-bind-html='{{dynamicHtml}}'></div>";
     let scope = {
       dynamicHtml: "<div ng-bind-html='html'></div>",
       html: "<h1>Expected Content</h1>"
@@ -58,7 +58,7 @@ describe('dynamic-html', function () {
     expect(element.text()).toContain("Expected Content");
 
     $scope.html = "<h1>Updated Content</h1>";
-    $scope.$broadcast('updateDynamicHtml');
+    $scope.$broadcast('updateDynamicBindHtml');
     $scope.$digest();
     expect(element.text()).toContain('Updated Content');
   });

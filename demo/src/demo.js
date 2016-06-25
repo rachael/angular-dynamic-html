@@ -1,12 +1,12 @@
 'use strict';
 
 var app = angular
-.module('demo', ['ngSanitize', 'dynamicHtml', 'hljs'])
+.module('demo', ['ngSanitize', 'dynamicBindHtml', 'hljs'])
 .controller('demoCtrl', ['$scope', '$sce',
   function($scope, $sce) {
 
     // Example 1: Basic Usage
-    $scope.htmlExample = `<div dynamic-html="{{dynamicHtml}}"></div>`;
+    $scope.htmlExample = `<div dynamic-bind-html="{{dynamicHtml}}"></div>`;
     $scope.controllerExample =
       `$scope.dynamicHtml = '<div ng-bind-html="html">Contents of $scope.dynamicHtml</div>';\
       \n$scope.ngHtml = '<p>Contents of $scope.ngHtml</p>';`;
@@ -34,7 +34,7 @@ var app = angular
     $scope.displayedCollection = 'eatSleepCodeRepeat';
     $scope.order = 'id';
 
-    $scope.needsBroadcastHtmlExample = '<div dynamic-html="{{generateDynamicHtml(displayedCollection)}}"></div>';
+    $scope.needsBroadcastHtmlExample = '<div dynamic-bind-html="{{generateDynamicHtml(displayedCollection)}}"></div>';
     $scope.needsBroadcastControllerExample =
       `$scope.eatSleepCodeRepeat = [ ... {id: 2, text: "code"} ... ];\
         \n$scope.eatSleepHackRepeat = [ ... {id: 2, text: "hack"} ... ];\
