@@ -17,7 +17,7 @@ $grid-margin: 1rem;
 // Typography
 body {
     font-family: "Open Sans";
-    font-weight: 300;
+    font-weight: 400;
     margin: $grid-margin;
 }
 
@@ -112,6 +112,27 @@ hr {
 @media(min-width: 90rem) {
     .container {
         width: 60vw;
+        margin: 0 auto;
+    }
+    .button-row .button {
+        max-width: calc(50% - #{$grid-margin/2} - 4px);
+    }
+}
+
+// beautiful thin fonts only on large retina displays
+@media
+(-webkit-min-device-pixel-ratio: 2) and
+(min-resolution: 192dpi) and
+(min-width: 800px) {
+    body {
+        font-weight: 300;
+    }
+}
+
+// pre-wrap for very small displays
+@media(max-width: 800px) {
+    pre {
+        white-space: pre-wrap;
     }
 }
 
@@ -133,5 +154,5 @@ hr {
 
     .github-corner .octo-arm {
         animation: octocat-wave 560ms ease-in-out;
-     }
- }
+    }
+}
