@@ -3,6 +3,11 @@
     box-sizing: border-box;
 }
 
+// Prevent font scaling in landscape while allowing user zoom
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
 // Scaffolding
 $grid-margin: 1rem;
 
