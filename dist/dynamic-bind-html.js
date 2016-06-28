@@ -1,7 +1,7 @@
 /*!
  * dynamic-bind-html
  * 
- * Version: 1.0.0 - 2016-06-28T00:55:24.640Z
+ * Version: 1.0.0 - 2016-06-28T01:53:05.083Z
  * License: MIT
  */
 
