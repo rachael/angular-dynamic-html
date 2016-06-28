@@ -134,13 +134,6 @@ hr {
     }
 }
 
-// pre-wrap for very small displays
-@media(max-width: 800px) {
-    pre {
-        white-space: pre-wrap;
-    }
-}
-
 // Github corner badge
 @keyframes octocat-wave {
     0%, 100% { transform: rotate(0); }
