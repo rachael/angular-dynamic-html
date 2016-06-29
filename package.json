@@ -1,6 +1,6 @@
 {
   "name": "dynamic-bind-html",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A replacement for ng-bind-html that compiles angular code, too.",
   "repository": "git@github.com:rachael/dynamic-bind-html.git",
   "main": "dist/dynamic-bind-html.js",
