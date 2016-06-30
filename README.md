@@ -1,4 +1,4 @@
-# dynamic-bind-html [![npm](https://img.shields.io/npm/v/dynamic-bind-html.svg?maxAge=2592000)](https://www.npmjs.com/package/dynamic-bind-html) [![CircleCI](https://img.shields.io/circleci/project/rachael/dynamic-bind-html.svg?maxAge=2592000)](https://circleci.com/gh/rachael/dynamic-bind-html)
+# dynamic-bind-html [![npm](https://img.shields.io/npm/v/dynamic-bind-html.svg?maxAge=3600)](https://www.npmjs.com/package/dynamic-bind-html) [![CircleCI](https://img.shields.io/circleci/project/rachael/dynamic-bind-html.svg?maxAge=3600)](https://circleci.com/gh/rachael/dynamic-bind-html)
 
 A directive inspired by `ng-bind-html` that accepts uncompiled angular code in addition to raw html.
 
